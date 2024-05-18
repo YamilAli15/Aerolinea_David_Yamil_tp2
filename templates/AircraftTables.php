@@ -8,7 +8,7 @@
       <th scope="col">Destino</th>
       <th scope="col">Escala</th>
        <th scope="col">Precio</th>
-    
+       <th scope="col">Fecha</th>
      
      </tr>
     </thead>

@@ -23,21 +23,4 @@ class AircraftTable{
         $this->view->AvionesView($tareas);
     }
 
-    function showTask($id){
-        $tarea = $this->model->getTask($id);
-        $this->view->AvionesView($tarea);
-        
-    }
-
-    function deleteTask($id){
-        $this->model->delete($id);
-        header("Location:".BASE_URL."tasks");
-    }
-      
-
-    function finalizeTask($id){
-        $this->model->finalize($id);
-        header("Location:".BASE_URL."tasks");
-    }
-
 }

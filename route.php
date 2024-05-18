@@ -1,6 +1,7 @@
 <?php
 require_once "app/controller/AircraftController.php";
 require_once "app/view/HomeView.php";
+require_once "app/view/LoginView.php";
 require_once "app/controller/ModifyAirplanesController.php";
 
 
@@ -10,37 +11,39 @@ require_once "app/controller/ModifyAirplanesController.php";
 
     
     if (empty($_GET['action'])) {       
-        $_GET['action'] = 'home';
+        $_GET['action'] = 'login';
     }
    
     $action = $_GET['action'];
     $parametro = explode('/', $action);
+    
     $controllerAirvaft = new AircraftTable();
+
     $controllerHome = new Home();
+
+    $controllerlogin =  new login();
+
     $controllerModifyAirplanes = new ModifyAirplanesController();
     //  print_r($parametro);
+
     switch ($parametro[0]) {
+        case 'login':
+            $controllerlogin->login();
+            break;
+
         case 'home':
-            $controllerHome->Homepage();
+           $controllerHome->Homepage();
             break;
 
         case 'TablaDeVuelos':
-            $controllerAirvaft->Showplanes();
-            // $controller->newTask();
-            break;
-
-        case 'ModificarLaTabla':
-            $controllerModifyAirplanes->ModifyAirplane();
+             $controllerAirvaft->Showplanes();
             break;
 
     
-         case 'finalize':
-            $controller->finalizeTask($parametro[1]);
+         case 'ModificarLaTabla':
+           $controllerModifyAirplanes->ModifyAirplane();
             break;
 
-        case 'show':
-            $controller->showTask($parametro[1]);
-            break;
 
         default:
           echo "404 not found";

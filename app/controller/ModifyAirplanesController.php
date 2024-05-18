@@ -22,30 +22,25 @@ class ModifyAirplanesController{
         $tareas = $this->model->getAllTasks();
         $this->view->ModifyAirplane($tareas);
     }
-    function showTask($id){
+    function showflight($id){
         $tarea = $this->model->getTask($id);
         $this->view->ModifyAirplane($tarea);
         
     }
-    function deleteTask($id){
+    function deleteflight($id){
         $this->model->delete($id);
         header("Location:".BASE_URL."tasks");
     }
-      
-
-    function finalizeTask($id){
-        $this->model->finalize($id);
-        header("Location:".BASE_URL."tasks");
-    }
-    function newTask(){
+    function newflight(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if(!empty($_POST['nombre']) && !empty($_POST['descripcion'])&&
-            isset($_POST['prioridad']) && $_POST['prioridad'] !== ""
+            if(!empty($_POST['nombre']) && !empty($_POST['Destino'])&& !empty($_POST['Escala']) &&  !empty($_POST['Precio']) && !empty($_POST['fecha'])
             ){
                 $nombre = $_POST['nombre'];
-                $descripcion = $_POST['descripcion'];
-                $prioridad = $_POST['prioridad'];
-                $this->model->insertTask($nombre, $descripcion, $prioridad);
+                $Destino = $_POST['Destino'];
+                $Escala= $_POST['Escala'];
+                $Precio= $_POST['Precio'];
+                $fecha= $_POST['fecha'];
+                $this->model->insertTask($nombre, $Destino, $Escala,$Precio,$fecha);
                 header("Location:".BASE_URL."tasks");             
 
             }else{

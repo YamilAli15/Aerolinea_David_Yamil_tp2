@@ -2,11 +2,14 @@
 require_once "templates/htmlEnd.php";
 require_once "templates/htmlStart.php";;
 require_once "templates/AircraftTables.php";
+require_once "templates/NavigationBar.php";
+
 class planes {
 
   
 function AvionesView($tareas){
     htmlStart();  
+    NavigationBar();
     AircraftTables();
 ?>
 <?php

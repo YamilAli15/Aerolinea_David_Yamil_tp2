@@ -2,9 +2,12 @@
 require_once "templates/htmlEnd.php";
 require_once "templates/htmlStart.php";
 require_once "templates/formAddTask.php";
+require_once "templates/NavigationBar.php";
 class Home { 
 function Homepage(){
-    htmlStart();   
+    htmlStart(); 
+    NavigationBar();  
+
     ?>
   <div id="planes">
      <h1>VOLÁ EN AEROLINEAS</h1>
