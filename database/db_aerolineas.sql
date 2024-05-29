@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2024 a las 00:11:24
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 28-05-2024 a las 19:57:27
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,11 +30,37 @@ SET time_zone = "+00:00";
 CREATE TABLE `aerolineas_argentinas` (
   `ID` int(11) NOT NULL,
   `Aeronave` varchar(100) NOT NULL,
-  `Destino` varchar(100) NOT NULL,
-  `Escala` varchar(100) NOT NULL,
   `Precio` float NOT NULL,
   `Fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `aerolineas_argentinas`
+--
+
+INSERT INTO `aerolineas_argentinas` (`ID`, `Aeronave`, `Precio`, `Fecha`) VALUES
+(2, 'Boeing 747', 2000000, '2024-08-14 16:30:00'),
+(6, 'Boeing 500', 123, '2024-05-18 19:53:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id_users` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `Password` varchar(250) NOT NULL,
+  `Range` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_users`, `name`, `Password`, `Range`) VALUES
+(1, 'webadmin', '$2y$10$hFXrttNIm.fjXjfa1AanRuAHUl5WW77cpMDCj5r2wk0l/T.qOK7C6', 'Admi');
 
 -- --------------------------------------------------------
 
@@ -43,11 +69,19 @@ CREATE TABLE `aerolineas_argentinas` (
 --
 
 CREATE TABLE `vuelos` (
-  `ID_Destino` int(11) NOT NULL,
+  `ID_Vuelos` int(11) NOT NULL,
   `Destino` varchar(100) NOT NULL,
-  `Escala` int(11) NOT NULL,
+  `Pilotos` varchar(250) NOT NULL,
   `id_aerolinea` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vuelos`
+--
+
+INSERT INTO `vuelos` (`ID_Vuelos`, `Destino`, `Pilotos`, `id_aerolinea`) VALUES
+(1, 'Francia', 'Juan y Pepito', 2),
+(2, 'Miami', 'Marcelo y Andrés', 6);
 
 --
 -- Índices para tablas volcadas
@@ -60,10 +94,16 @@ ALTER TABLE `aerolineas_argentinas`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_users`);
+
+--
 -- Indices de la tabla `vuelos`
 --
 ALTER TABLE `vuelos`
-  ADD PRIMARY KEY (`ID_Destino`),
+  ADD PRIMARY KEY (`ID_Vuelos`),
   ADD KEY `FK_VUELO_AEROLINEA` (`id_aerolinea`);
 
 --
@@ -74,13 +114,19 @@ ALTER TABLE `vuelos`
 -- AUTO_INCREMENT de la tabla `aerolineas_argentinas`
 --
 ALTER TABLE `aerolineas_argentinas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `vuelos`
 --
 ALTER TABLE `vuelos`
-  MODIFY `ID_Destino` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

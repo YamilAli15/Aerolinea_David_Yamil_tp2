@@ -1,8 +1,7 @@
 <?php
-require_once "app/controller/AircraftController.php";
-require_once "app/view/HomeView.php";
-require_once "app/view/LoginView.php";
-require_once "app/controller/ModifyAirplanesController.php";
+require_once "app/controller/ControladorAeronave.php";
+require_once "app/controller/Controladorvuelos.php";
+require_once "app/controller/LoginController.php";
 
 
 
@@ -17,34 +16,43 @@ require_once "app/controller/ModifyAirplanesController.php";
     $action = $_GET['action'];
     $parametro = explode('/', $action);
     
-    $controllerAirvaft = new AircraftTable();
+    $controller_Aeronave = new Controlador_Aeronave();
+    $controller_vuelos = new Controlador_vuelos();
+    $controller_locgin = new login();
 
-    $controllerHome = new Home();
-
-    $controllerlogin =  new login();
-
-    $controllerModifyAirplanes = new ModifyAirplanesController();
     //  print_r($parametro);
 
     switch ($parametro[0]) {
         case 'login':
-            $controllerlogin->login();
+            $controller_locgin->login();
             break;
 
         case 'home':
-           $controllerHome->Homepage();
+            $controller_locgin->Homepage();
             break;
 
-        case 'TablaDeVuelos':
-             $controllerAirvaft->Showplanes();
+        case 'Tabla':
+             $controller_Aeronave->Show_Admin_noadmin_table();
             break;
 
+        case 'insert_vuelo':
+            $controller_vuelos->insert_vuelo();
+             break;
+        
+        case 'Verdatos':
+            $controller_vuelos->Mostrar_tabla_de_vuelos();
+            break; 
+        case 'Verify_login':
+            $controller_locgin->Verify_login();
+                break;           
+            
+        case 'eliminarAeronave':
+            $controller_Aeronave->eliminarAeronave($parametro[$id]);
+                break;           
+                    
     
-         case 'ModificarLaTabla':
-           $controllerModifyAirplanes->ModifyAirplane();
-            break;
-
-
+                              
+            
         default:
           echo "404 not found";
     }

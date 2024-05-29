@@ -1,9 +1,9 @@
 <?php
 require_once "config.php";
 
-class Model{
+class Model{ //model general 
 
-    protected $conexion;
+    protected $conexion; // por herencia 
 
     public function __construct(){
         $this->conexion = $this->createConexion();
@@ -11,7 +11,7 @@ class Model{
     }
 
     public function createConexion(){
-      
+        
         try{
             $db = new PDO("mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
     
@@ -32,39 +32,39 @@ class Model{
             CREATE TABLE `aerolineas_argentinas` (
                 `ID` int(11) NOT NULL,
                 `Aeronave` varchar(100) NOT NULL,
-                `Destino` varchar(100) NOT NULL,
-                `Escala` varchar(100) NOT NULL,
                 `Precio` float NOT NULL,
                 `Fecha` datetime NOT NULL
-              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+              
             
             
-            
-        CREATE TABLE `vuelos` (
-            `ID_Destino` int(11) NOT NULL,
-            `Destino` varchar(100) NOT NULL,
-            `Escala` int(11) NOT NULL,
-            `id_aerolinea` int(11) NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-            
+              CREATE TABLE `users` (
+                `id_users` int(11) NOT NULL,
+                `name` varchar(250) NOT NULL,
+                `Password` varchar(250) NOT NULL,
+                `Range` varchar(250) NOT NULL
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+              
 
-        ALTER TABLE `aerolineas_argentinas`
-  ADD PRIMARY KEY (`ID`);
+              CREATE TABLE `vuelos` (
+                `ID_Vuelos` int(11) NOT NULL,
+                `Destino` varchar(100) NOT NULL,
+                `Pilotos` varchar(250) NOT NULL,
+                `id_aerolinea` int(11) NOT NULL
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+               
 
-        ALTER TABLE `vuelos`
-        ADD PRIMARY KEY (`ID_Destino`),
-        ADD KEY `FK_VUELO_AEROLINEA` (`id_aerolinea`);
+              --
+              ALTER TABLE `aerolineas_argentinas`
+                MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
-        ALTER TABLE `aerolineas_argentinas`
-        MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+              ALTER TABLE `users`
+                MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
-        ALTER TABLE `vuelos`
-        MODIFY `ID_Destino` int(11) NOT NULL AUTO_INCREMENT;
-
-        ALTER TABLE `vuelos`
-        ADD CONSTRAINT `FK_VUELO_AEROLINEA` FOREIGN KEY (`id_aerolinea`) REFERENCES `aerolineas_argentinas` (`ID`);
-        COMMIT;
-                    
+              ALTER TABLE `vuelos`
+                MODIFY `ID_Vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+                
+                 
             
             ";
               
