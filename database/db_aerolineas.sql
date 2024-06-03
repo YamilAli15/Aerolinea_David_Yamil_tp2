@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2024 a las 23:11:09
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 04-06-2024 a las 00:39:32
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,11 @@ CREATE TABLE `aerolineas_argentinas` (
 
 INSERT INTO `aerolineas_argentinas` (`ID`, `Aeronave`, `Precio`, `Fecha`) VALUES
 (2, 'Boeing 747', 2000000, '2024-08-14 16:30:00'),
-(6, 'Boeing 500', 1500000, '2024-05-18 19:53:00');
+(6, 'Boeing 500', 1500000, '2024-05-18 19:53:00'),
+(12, 'Londres ', 1600000, '2024-06-13 19:28:29'),
+(13, 'Madrid', 2000000, '2024-06-30 19:28:29'),
+(14, 'Nueva York', 3000000, '2024-06-26 19:31:25'),
+(15, 'Paris', 50000000, '2024-06-18 19:31:25');
 
 -- --------------------------------------------------------
 
@@ -80,7 +84,11 @@ CREATE TABLE `vuelos` (
 --
 
 INSERT INTO `vuelos` (`ID_Vuelos`, `Destino`, `Pilotos`, `id_aerolinea`) VALUES
-(1, 'Francia', 'Juan y Pepito', 2);
+(1, 'Francia', 'Juan y Pepito', 2),
+(5, 'Estados Unidos', 'Ariel y Juan ', 6),
+(6, 'Italia', 'Cristian y Luis', 6),
+(9, 'Japon', 'Braian y Diego', 14),
+(10, 'España', 'Mariano y Matias ', 15);
 
 --
 -- Índices para tablas volcadas
@@ -113,7 +121,7 @@ ALTER TABLE `vuelos`
 -- AUTO_INCREMENT de la tabla `aerolineas_argentinas`
 --
 ALTER TABLE `aerolineas_argentinas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -125,7 +133,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `vuelos`
 --
 ALTER TABLE `vuelos`
-  MODIFY `ID_Vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
