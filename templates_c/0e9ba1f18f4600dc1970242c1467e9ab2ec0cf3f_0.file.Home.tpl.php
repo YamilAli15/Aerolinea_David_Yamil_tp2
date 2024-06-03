@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.2, created on 2024-05-27 20:13:30
+/* Smarty version 4.5.2, created on 2024-06-03 22:35:18
   from 'C:\xampp\htdocs\Aerolinea_David_Yamil\templates\Home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.2',
-  'unifunc' => 'content_6654cd4a5bfa46_50729276',
+  'unifunc' => 'content_665e29067f4883_99050883',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0e9ba1f18f4600dc1970242c1467e9ab2ec0cf3f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Aerolinea_David_Yamil\\templates\\Home.tpl',
-      1 => 1716490262,
+      1 => 1717446898,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6654cd4a5bfa46_50729276 (Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-<div id="carouselExampleCaptions" class="carousel slide">
+function content_665e29067f4883_99050883 (Smarty_Internal_Template $_smarty_tpl) {
+?><div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
@@ -60,6 +59,5 @@ function content_6654cd4a5bfa46_50729276 (Smarty_Internal_Template $_smarty_tpl)
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
-<?php }
+</div><?php }
 }

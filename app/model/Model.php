@@ -1,33 +1,36 @@
 <?php
 require_once "config.php";
 
-class Model{ //model general 
+class Model
+{ //model general 
 
-    protected $conexion; // por herencia 
+  protected $conexion; // por herencia 
 
-    public function __construct(){
-        $this->conexion = $this->createConexion();
-        $this->deploy();
+  public function __construct()
+  {
+    $this->conexion = $this->createConexion();
+    $this->deploy();
+  }
+
+  public function createConexion()
+  {
+
+    try {
+      $db = new PDO("mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DB . ";charset=utf8", MYSQL_USER, MYSQL_PASS);
+    } catch (Exception $e) {
+      var_dump($e);
     }
 
-    public function createConexion(){
-        
-        try{
-            $db = new PDO("mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
-    
-        }catch(Exception $e){
-            var_dump($e);
-        }
-    
-        return $db;
-    }
+    return $db;
+  }
 
 
-  private function deploy() {
-        $query = $this->conexion->query('SHOW TABLES');
-        $tables = $query->fetchAll();
-        if(count($tables) == 0) {
-            $sql = "
+  private function deploy()
+  {
+    $query = $this->conexion->query('SHOW TABLES');
+    $tables = $query->fetchAll();
+    if (count($tables) == 0) {
+      $sql = "
             
             CREATE TABLE `aerolineas_argentinas` (
                 `ID` int(11) NOT NULL,
@@ -67,12 +70,10 @@ class Model{ //model general
                  
             
             ";
-              
 
 
-        $this->conexion->query($sql);
+
+      $this->conexion->query($sql);
     }
-    }
-
-
+  }
 }

@@ -11,7 +11,7 @@
   </div>
   {if $msj}
     <div class='alert alert-warning'>
-        {$msj}
+      {$msj}
     </div>
   {/if}
 

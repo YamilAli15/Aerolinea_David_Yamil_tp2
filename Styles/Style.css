@@ -5,6 +5,9 @@ h5{
 p{
     color: black;
 }
-#ImágenesError{
+.ImágenesError{
     display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
+
