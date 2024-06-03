@@ -48,12 +48,13 @@ class AvionesView extends View
     $this->smarty->assign('vuelos', $vuelos);
     $this->smarty->display('vuelosTables.tpl');
   }
-  function Editar_tabla_de_vuelos($vuelos)
+  function Editar_tabla_de_vuelos($vuelos,$Aeronave)
   {
 
 
     $this->smarty->assign('cantidad', count($vuelos));
     $this->smarty->assign('vuelos', $vuelos);
+    $this->smarty->assign('Aeronave', $Aeronave);
     $this->smarty->display('Editartabladevuelos.tpl');
   }
 }

@@ -52,8 +52,8 @@ class Controlador_vuelos
         }
     }
    function Editar_tabla_de_vuelos(){
-    
+    $Aeronave = $this->modelAeronave->datos_de_tabla_de_Aeronave();
     $vuelos = $this->modelvuelos->tabla_de_vuelos();
-    $this->view->Editar_tabla_de_vuelos($vuelos);
+    $this->view->Editar_tabla_de_vuelos($vuelos,$Aeronave);
    }
 }
